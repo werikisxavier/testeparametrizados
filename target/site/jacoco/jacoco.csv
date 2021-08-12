@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+BonusFuncionario,br.ufes.calculodebonus,ProcessadoraBonus,0,45,0,2,0,10,0,3,0,2
+BonusFuncionario,br.ufes.calculodebonus,MetodoCalculaBonusFalta,0,47,0,6,0,10,0,5,0,2
+BonusFuncionario,br.ufes.calculodebonus,MetodoCalculoBonusCargo,0,66,1,5,0,9,1,4,0,2
+BonusFuncionario,br.ufes.calculodebonus,MetodoCalculaBonusDistancia,0,50,0,6,0,10,0,5,0,2
+BonusFuncionario,br.ufes.model,Funcionario,15,143,0,24,7,39,4,23,4,11
+BonusFuncionario,br.ufes.model,Bonus,3,12,0,0,1,5,1,2,1,2

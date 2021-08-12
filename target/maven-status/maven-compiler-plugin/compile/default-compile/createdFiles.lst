@@ -1,0 +1,8 @@
+br\ufes\calculodebonus\MetodoCalculaBonusFalta.class
+br\ufes\calculodebonus\MetodoCalculoBonusCargo.class
+br\ufes\model\Funcionario.class
+br\ufes\calculodebonus\IMetodoCalculaBonus.class
+br\ufes\calculodebonus\CalculaBonus.class
+br\ufes\calculodebonus\ProcessadoraBonus.class
+br\ufes\calculodebonus\MetodoCalculaBonusDistancia.class
+br\ufes\model\Bonus.class

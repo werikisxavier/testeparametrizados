@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Funcionario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BonusFuncionario</a> &gt; <a href="index.source.html" class="el_package">br.ufes.model</a> &gt; <span class="el_source">Funcionario.java</span></div><h1>Funcionario.java</h1><pre class="source lang-java linenums">package br.ufes.model;
+
+import java.util.ArrayList;
+
+public class Funcionario {
+
+    private String nome;
+    private double salarioBase;
+    private double salarioTotal;
+    private int distanciaMoradia;
+    private int faltas;
+    private String cargo;
+    private final ArrayList&lt;Bonus&gt; bonusRecebidos;
+
+<span class="fc" id="L15">    public Funcionario(String nome, double salarioBase, String cargo) throws Exception {</span>
+<span class="fc" id="L16">        String exceptions = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L18" title="All 6 branches covered.">        if (nome == null || nome == &quot;&quot; || nome.matches(&quot;[0-9]*&quot;)) {</span>
+<span class="fc" id="L19">            exceptions = exceptions.concat(&quot;#1 Informe um nome válido&quot;);</span>
+        }
+
+<span class="fc bfc" id="L22" title="All 4 branches covered.">        if (cargo == null || !((cargo.toUpperCase().equals(&quot;GERENTE&quot;))</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">                || (cargo.toUpperCase().equals(&quot;SUPERVISOR&quot;))</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">                ||(cargo.toUpperCase().equals(&quot;PROGRAMADOR&quot;)))) {</span>
+<span class="fc" id="L25">            exceptions = exceptions.concat(&quot;#2 Informe um cargo válido&quot;);</span>
+        }
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (salarioBase &lt; 998.0) {</span>
+<span class="fc" id="L28">            exceptions = exceptions.concat(&quot;#3 O salário base deve ser &gt;= R$ 998,00&quot;);</span>
+        }
+
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (exceptions.length() &gt; 0) {</span>
+<span class="fc" id="L32">            throw new Exception(exceptions);</span>
+        }
+<span class="fc" id="L34">        this.nome = nome;</span>
+<span class="fc" id="L35">        this.cargo = cargo;</span>
+<span class="fc" id="L36">        this.salarioBase = salarioBase;</span>
+<span class="fc" id="L37">        this.bonusRecebidos = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L38">    }</span>
+
+    public String getNome() {
+<span class="nc" id="L41">        return nome;</span>
+    }
+
+    public void setNome(String nome) {
+<span class="nc" id="L45">        this.nome = nome;</span>
+<span class="nc" id="L46">    }</span>
+
+    public double getSalarioBase() {
+<span class="fc" id="L49">        return this.salarioBase;</span>
+    }
+
+    public void setSalarioBase(double salarioBase) {
+<span class="nc" id="L53">        this.salarioBase = salarioBase;</span>
+<span class="nc" id="L54">    }</span>
+
+    public int getFaltas() {
+<span class="fc" id="L57">        return faltas;</span>
+    }
+
+    public void setFaltas(int faltas) throws Exception {
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (faltas &lt; 0  ){</span>
+<span class="fc" id="L62">            throw new Exception(&quot;#4 A quantidade de faltas deve ser &gt;= 0&quot;);</span>
+        }
+        
+<span class="fc" id="L65">        this.faltas = faltas;</span>
+<span class="fc" id="L66">    }</span>
+
+    public int getDistanciaMoradia() {
+<span class="fc" id="L69">        return distanciaMoradia;</span>
+    }
+
+    public void setDistanciaMoradia(int distanciaMoradia) throws Exception {
+<span class="fc bfc" id="L73" title="All 2 branches covered.">            if (distanciaMoradia &lt; 0  ){</span>
+<span class="fc" id="L74">            throw new Exception(&quot;#5 A distancia deve ser &gt;= 0&quot;);</span>
+        }
+        
+<span class="fc" id="L77">        this.distanciaMoradia = distanciaMoradia;</span>
+<span class="fc" id="L78">    }</span>
+
+    public String getCargo() {
+<span class="fc" id="L81">        return cargo;</span>
+    }
+
+    public void setCargo(String cargo) {
+<span class="nc" id="L85">        this.cargo = cargo;</span>
+<span class="nc" id="L86">    }</span>
+
+    public double getSalario() {
+<span class="fc" id="L89">        return this.calculaSalario();</span>
+    }
+
+    private double calculaSalario() {
+<span class="fc" id="L93">        this.salarioTotal = this.salarioBase + this.calculaTotalBonus();</span>
+<span class="fc" id="L94">        return this.salarioTotal;</span>
+    }
+
+    public void addBonus(Bonus bonus) {
+<span class="fc" id="L98">        this.bonusRecebidos.add(bonus);</span>
+<span class="fc" id="L99">    }</span>
+
+    public double calculaTotalBonus() {
+<span class="fc" id="L102">        double totalBonus = 0;</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        for (Bonus bonus : bonusRecebidos) {</span>
+<span class="fc" id="L104">            totalBonus += bonus.getValor();</span>
+<span class="fc" id="L105">        }</span>
+
+<span class="fc" id="L107">        return totalBonus;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
