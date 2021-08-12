@@ -1,2 +1,2 @@
 # planejamentotestesunitarios
-(Atividade assíncrona) - Planejamento e execução de testes unitários
+(Atividade assíncrona) - Testes parametrizados
